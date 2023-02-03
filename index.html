@@ -4,7 +4,31 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>The Lord of the rings</title>
   </head>
-  <body></body>
+  <body>
+    <div id="app">
+        <p v-if='characters.length === 0'>There are no characters</p>
+        <ul v-else>
+            <li v-for='character in characters'>{{ character.name }}</li>
+        </ul>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const { createApp } = Vue;
+
+        const app = createApp({
+            data: () => ({
+                characters: [
+                    {name: 'Gandalf'},
+                    {name: 'Aragorn'},
+                    {name: 'Legolas'},
+                    {name: 'Frodo'},
+                ],
+            }),
+        });
+
+        app.mount('#app');
+    </script>
+  </body>
 </html>
